@@ -64,7 +64,7 @@ def RNN(metrics,num_words,embed_size,max_len):
                      input_length=max_len))
   model.add(SimpleRNN(100))
   model.add(Dense(74, activation='sigmoid'))
-  model.compile(loss='binary_crossentropy', optimizer='adam', metrics=metrics)
+  model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=metrics)
   return model
 
 # A simple LSTM with glove embeddings and one dense layer
@@ -79,7 +79,7 @@ def SILSTM(metrics,num_words,embed_size,embedding_matrix,max_len):
 
   model.add(LSTM(100, dropout=0.3, recurrent_dropout=0.3))
   model.add(Dense(74, activation='sigmoid'))
-  model.compile(loss='binary_crossentropy', optimizer='adam',metrics=metrics)
+  model.compile(loss='categorical_crossentropy', optimizer='adam',metrics=metrics)
   return model        
 
  # A simple bidirectional LSTM with glove embeddings and one dense layer
@@ -93,7 +93,7 @@ def BILSTM(metrics,num_words,embed_size,embedding_matrix,max_len):
                      trainable=False))
   model.add(Bidirectional(LSTM(300, dropout=0.3, recurrent_dropout=0.3)))
   model.add(Dense(74,activation='sigmoid'))
-  model.compile(loss='binary_crossentropy', optimizer='adam',metrics=metrics)
+  model.compile(loss='categorical_crossentropy', optimizer='adam',metrics=metrics)
   return model
 
 #Simple GRU model
@@ -108,5 +108,5 @@ def GRU_MOD(metrics,num_words,embed_size,embedding_matrix,max_len):
   model.add(SpatialDropout1D(0.3))
   model.add(GRU(300))
   model.add(Dense(74, activation='sigmoid'))
-  model.compile(loss='binary_crossentropy', optimizer='adam',metrics=metrics)
+  model.compile(loss='categorical_crossentropy', optimizer='adam',metrics=metrics)
   return model
