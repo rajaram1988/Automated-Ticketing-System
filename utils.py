@@ -92,7 +92,7 @@ def preprocess(text):
   w = w.lower()
 
   #to remove email from the description
-  w = re.sub(r'([a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3})',' ',w)
+  w = re.sub(r'([.\w]{3,}@[.\w]{5,})',r' ',w)
 
   #To remove the disclaimer
   
